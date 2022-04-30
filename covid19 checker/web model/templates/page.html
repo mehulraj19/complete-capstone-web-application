@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Covid Detection</title>
+    <style>
+        body{
+            padding:20px;
+            font-size:1.3rem;
+        }
+    </style>
+</head>
+<body>
+
+    <center>
+        <h1>Covid Checker</h1><br><br>
+        <form method="POST">
+            {{ form.csrf_token }}
+            <label>Difficulty in Breathing </label>
+            {{ form.difficulty_in_breathing_data }}
+            <br/> <br/>
+            <label>Diarrhea</label>
+            {{ form.diarrhea_data }}
+            <br/><br/>
+            <label>Pains</label>
+            {{ form.pains_data }}
+            <br/><br/>
+            <label>Fever</label>
+            {{ form.fever_data }}
+            <br/><br/>
+            <label>Sore-Throat</label>
+            {{ form.sore_throat_data }}
+            <br/><br/>
+            <input type="submit">
+        </form>
+    </center>
+
+    <h4>{{ message | safe }}</h4> </h4>
+    
+</body>
+</html>
