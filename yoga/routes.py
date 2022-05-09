@@ -422,24 +422,33 @@ def covidcheck():
         fd = form.fever_data.data
         std = form.sore_throat_data.data
         message = ''
-        if dib == 'YES' and dd == 'YES' and pd == 'YES':
-            message = 'There is high chance that you may have covid!!'
+
+        if dib == 'YES' and dd == 'YES' and pd == 'YES' and fd == 'YES' and std == 'YES':
+            message = 'There is high chance you have Covid, Get Tested.'
+        elif dib == 'YES' and dd == 'NO' and pd == 'YES' and fd == 'YES' and std == 'YES':
+            message = 'There is high chance you have Covid, Get Tested.'
+        elif dib == 'YES' and dd == 'NO' and pd == 'NO' and fd == 'YES' and std == 'YES':
+            message = 'There is high chance you have Covid, Get Tested.'
+        elif dib == 'YES' and dd == 'NO' and pd == 'NO' and fd == 'NO' and std == 'YES':
+            message = 'There is less chance you have covid.'
         elif dib == 'YES' and dd == 'YES':
-            message = 'There is high chance that you may have covid!!'
-        elif dib == 'YES' and pd == 'YES':
-            message = 'There is high chance that you may have covid!!'
-        elif dib == 'NO' and dd == 'NO' and pd == 'NO' and fd == 'YES' and std == 'YES':
-            message = 'There is less chance that you have covid!!'
-        elif dib == 'NO' and dd == 'NO' and pd == 'NO':
-            message = 'There is less chance that you may have covid so need not to worry, take rest!!'
-        elif dib == 'NO' and dd == 'NO' and pd == 'YES':
-            message = 'There is less chance that you have covid, take Paracetamol!!'
-        elif dib == 'NO' and dd == 'YES' and pd == 'YES' and fd == 'YES':
-            message = ' it\'s advisable to have covid test!!'
+            message = 'There is high chance you have Covid, Get Tested.'
         elif dib == 'NO' and dd == 'YES' and pd == 'YES' and fd == 'YES' and std == 'YES':
-            message = ' it\'s advisable to have covid test!!'
+            message = 'There is chance you have Covid, Get Tested.'
+        elif dib == 'NO' and dd == 'NO' and pd == 'YES' and fd == 'YES' and std == 'YES':
+            message = 'There is chance you have covid, get Tested.'
+        elif dib == 'NO' and dd == 'YES' and pd == 'NO' and fd == 'YES' and std == 'YES':
+            message = 'There is chance you have covid, get Tested.'
+        elif dib == 'NO' and dd == 'YES' and pd == 'NO' and fd == 'NO' and std == 'YES':
+            message = 'There is less chance you have covid, take rest. Avoid going out.'
+        elif dib == 'NO' and dd == 'YES' and pd == 'NO' and fd == 'YES' and std == 'NO':
+            message = 'There is less chance you have covid, take rest.'
+        elif dib == 'NO' and dd == 'NO' and pd == 'NO' and fd == 'YES' and std == 'YES':
+            message = 'There is less chance you have covid, Take Rest. Stay Indoors.'
+        elif dib == 'NO' and dd == 'NO' and pd == 'NO' and fd == 'NO' and std == 'YES':
+            message = 'There is very less chance you have covid!!'
         else:
-            message = 'No need to worry!!'
+            message = 'No need to worry!'
         return render_template('covidcheck.html', message=message, form=form)
     return render_template('covidcheck.html', form=form)
 
